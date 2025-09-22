@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { signIn, getSession } from "next-auth/react"
+import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 
 export default function SignIn() {
@@ -17,7 +17,7 @@ export default function SignIn() {
     setIsLoading(true)
     try {
       await signIn("google", { callbackUrl: "/" })
-    } catch (err) {
+    } catch {
       setError("Failed to sign in with Google")
     } finally {
       setIsLoading(false)
@@ -41,7 +41,7 @@ export default function SignIn() {
       } else {
         router.push("/")
       }
-    } catch (err) {
+    } catch {
       setError("Failed to sign in")
     } finally {
       setIsLoading(false)
@@ -128,7 +128,7 @@ export default function SignIn() {
 
           <div className="text-center">
             <p className="text-sm text-gray-600">
-              Don't have an account?{" "}
+              Don’t have an account?{" "}
               <span className="text-blue-600 hover:text-blue-500 cursor-pointer">
                 Sign up with Google above
               </span>

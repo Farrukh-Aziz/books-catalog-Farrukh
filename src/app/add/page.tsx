@@ -67,7 +67,7 @@ export default function AddBook() {
         const data = await response.json()
         setError(data.error || "Failed to add book")
       }
-    } catch (err) {
+    } catch {
       setError("Failed to add book")
     } finally {
       setLoading(false)

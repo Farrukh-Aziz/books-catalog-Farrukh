@@ -6,7 +6,7 @@ import { authOptions } from '@/lib/auth'
 // DELETE /api/books/[id] - Delete a book
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions)
@@ -18,7 +18,7 @@ export async function DELETE(
       )
     }
 
-    const { id } = params
+    const { id } = await context.params
 
     const book = await prisma.book.findUnique({
       where: { id }

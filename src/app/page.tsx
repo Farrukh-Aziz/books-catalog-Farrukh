@@ -31,7 +31,7 @@ export default function Home() {
       } else {
         setError("Failed to fetch books")
       }
-    } catch (err) {
+    } catch {
       setError("Failed to fetch books")
     } finally {
       setLoading(false)
@@ -51,7 +51,7 @@ export default function Home() {
       } else {
         alert("Failed to delete book")
       }
-    } catch (err) {
+    } catch {
       alert("Failed to delete book")
     }
   }
